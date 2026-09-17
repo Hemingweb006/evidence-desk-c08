@@ -1,0 +1,17 @@
+{
+  "name": "Evidence Desk (C08)",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": { "label": "Evidence Desk", "onAutoForward": "notify" }
+  },
+  "postCreateCommand": "npm ci",
+  "secrets": {
+    "DEEPSEEK_API_KEY": {
+      "description": "DeepSeek API key used by the reader and writer models (required)."
+    },
+    "DEMO_PASSWORD": {
+      "description": "Password for the shared demo, user 'dail' (strongly recommended when the port is public)."
+    }
+  }
+}

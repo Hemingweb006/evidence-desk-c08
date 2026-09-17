@@ -1,0 +1,31 @@
+{
+  "name": "evidence-desk-c08",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "evals": "python3 evals/run_evals.py"
+  },
+  "dependencies": {
+    "@langchain/core": "^1.2.11",
+    "@langchain/langgraph": "^1.4.15",
+    "lucide-react": "^1.46.0",
+    "next": "16.3.5",
+    "openai": "^7.17.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.13",
+    "typescript": "^5"
+  }
+}

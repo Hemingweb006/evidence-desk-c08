@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+/*
+ * Thème inspiré de la charte publique de la cliente (Schmitz-Stiftungen) :
+ * fond blanc sobre, vert #228608, typographie Lato, barre verte fine, pied de page vert.
+ * Couleurs de statut distinctes du vert de marque (« belegt » = vert-bleu, « Planwert » = bleu).
+ * Contrastes vérifiés (AA) : texte vert sur fond clair → --accent-ink.
+ */
+:root {
+  color-scheme: light;
+  --page: #f9f9fb;
+  --surface: #ffffff;
+  --surface-2: #f2f3f5;
+  --ink: #141617;
+  --ink-2: #4a4e57;
+  --muted: #676b73;
+  --line: #e3e5e9;
+  --line-strong: #c9ccd2;
+  --accent: #228608;
+  --accent-soft: #eaf4e6;
+  --accent-ink: #1b6a06;
+  --on-accent: #ffffff;
+  --good: #12806a;
+  --good-ink: #0b5e4e;
+  --good-soft: #e3f3ef;
+  --target: #2f6db5;
+  --target-ink: #22548c;
+  --target-soft: #e7f0fa;
+  --warning: #e0a106;
+  --warning-ink: #6e4f00;
+  --warning-soft: #fcf3dc;
+  --critical: #c23b32;
+  --critical-ink: #9c2a22;
+  --critical-soft: #fbeae8;
+  --bar: #228608;
+  --hl: #fff1a8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #111314;
+    --surface: #1b1d20;
+    --surface-2: #24272b;
+    --ink: #f3f4f5;
+    --ink-2: #c5c8ce;
+    --muted: #a3a7ae;
+    --line: #2d3035;
+    --line-strong: #41454b;
+    --accent: #6cc34a;
+    --accent-soft: #1d2a1a;
+    --accent-ink: #9fd98a;
+    --on-accent: #141617;
+    --good: #37a88f;
+    --good-ink: #5ec9b0;
+    --good-soft: #10261f;
+    --target: #5b95dc;
+    --target-ink: #8ab8ef;
+    --target-soft: #16263b;
+    --warning-ink: #f2c14e;
+    --warning-soft: #2d2410;
+    --critical-ink: #ef7d74;
+    --critical-soft: #331616;
+    --bar: #6cc34a;
+    --hl: #4a3f10;
+  }
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
+  --color-on-accent: var(--on-accent);
+  --color-good: var(--good);
+  --color-good-ink: var(--good-ink);
+  --color-good-soft: var(--good-soft);
+  --color-target: var(--target);
+  --color-target-ink: var(--target-ink);
+  --color-target-soft: var(--target-soft);
+  --color-warning: var(--warning);
+  --color-warning-ink: var(--warning-ink);
+  --color-warning-soft: var(--warning-soft);
+  --color-critical: var(--critical);
+  --color-critical-ink: var(--critical-ink);
+  --color-critical-soft: var(--critical-soft);
+  --font-sans: "Lato", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  letter-spacing: 0.01em;
+}
+
+/* Titres de page : vert, Lato régulier, comme la charte */
+.page-title {
+  color: var(--accent);
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+mark.cite-hl {
+  background: var(--hl);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.pulse {
+  animation: pulse-dot 1s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pulse, .animate-spin { animation: none; }
+}
+
+.report-doc {
+  font-family: var(--font-sans);
+}
+.watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  font-family: var(--font-sans);
+  font-size: 110px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  opacity: 0.04;
+  transform: rotate(-24deg);
+}
+
+/* Prüfvermerk : encadré façon tampon */
+.stamp {
+  border: 3px double var(--stamp);
+  color: var(--stamp);
+  transform: rotate(-3deg);
+}
+
+/* Wirkungskette : chevrons */
+.chain-step {
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 12px 50%);
+}
+.chain-step:first-child {
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  main {
+    padding: 0 !important;
+  }
+  .card {
+    border: none;
+  }
+  .print-break-avoid {
+    break-inside: avoid;
+  }
+}
